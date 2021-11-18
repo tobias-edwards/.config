@@ -15,6 +15,8 @@ zsh_add_plugin "jeffreytse/zsh-vi-mode"
 
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
 
+zsh_add_file "${PLUGIN_CONFIG}/git.zsh"
+
 # Volta
 if [ ! -s "${CONFIG_DIR}/volta/bin/volta" ]; then
     # Run installer but handle Volta setup manually (not currently supported on Windows)
