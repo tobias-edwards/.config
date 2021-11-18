@@ -1,0 +1,16 @@
+# Most of this stuff should NOT live in .config/
+coc/
+configstore/
+gcloud/
+iterm2/
+volta/
+yarn/
+
+# nvim
+nvim/autoload/
+nvim/.netrwhist
+
+# zsh
+zsh/plugins/installed/
+zsh/.zcompdump
+zsh/.zsh_history
