@@ -17,6 +17,11 @@ zsh_add_plugin "zsh-users/zsh-autosuggestions"
 
 zsh_add_file "${PLUGIN_CONFIG}/git.zsh"
 
+# Deno
+if [ ! -s "$HOME/.deno/bin/deno" ]; then
+    curl -fsSL https://deno.land/x/install/install.sh | sh
+fi
+
 # Volta
 if [ ! -s "$HOME/.volta/bin/volta" ]; then
     # Run installer but handle Volta setup manually (not currently supported on Windows)
