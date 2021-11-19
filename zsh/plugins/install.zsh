@@ -18,7 +18,7 @@ zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_file "${PLUGIN_CONFIG}/git.zsh"
 
 # Volta
-if [ ! -s "${CONFIG_DIR}/volta/bin/volta" ]; then
+if [ ! -s "$HOME/.volta/bin/volta" ]; then
     # Run installer but handle Volta setup manually (not currently supported on Windows)
     curl "https://get.volta.sh" | bash -s -- --skip-setup
 fi
