@@ -10,6 +10,10 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Plug 'kyazdani42/nvim-web-devicons' " Recommended (for coloured icons)
     " Plug 'ryanoasis/vim-devicons' " Icons without colours
 
+    Plug 'Pocco81/TrueZen.nvim'
+    
+    Plug 'ellisonleao/glow.nvim'
+
     Plug 'neovim/nvim-lspconfig'
 
     " Toggle terminal within session
@@ -28,7 +32,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
     " Code-completion
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    Plug 'neoclide/coc-eslint'
 
     " Prettier - slow?
     " Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
@@ -77,8 +80,10 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Vim markdown stuff
     Plug 'godlygeek/tabular'
     Plug 'plasticboy/vim-markdown'
+
     " Live updating markdown
     Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+
     " Only colour the current section
     Plug 'junegunn/limelight.vim'
     " Zen mode editing
