@@ -8,9 +8,8 @@ source $HOME/.config/nvim/keys/mappings.vim
 source $HOME/.config/nvim/themes/gruvbox.vim
 
 " Plugin configurations
-" source $HOME/.config/nvim/plugins/config/coc.vim
 source $HOME/.config/nvim/plugins/config/emmetvim.vim
 source $HOME/.config/nvim/plugins/config/fzf.vim
 source $HOME/.config/nvim/plugins/config/nerdtree.vim
-source $HOME/.config/nvim/plugins/config/vim-gitgutter.vim
 source $HOME/.config/nvim/plugins/config/toggleterm.lua
+source $HOME/.config/nvim/plugins/config/vim-gitgutter.vim
