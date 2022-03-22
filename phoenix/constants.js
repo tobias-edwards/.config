@@ -10,6 +10,8 @@ const AREA = {
   TOP_RIGHT: 'top-right',
 };
 
+// TODO: Some windows have a minimum width e.g. Microsoft Outlook
+// So cannot conform to the specific  quadrant sizes
 const FRAMES = {
   [AREA.BOTTOM]: (container) => ({
     x: container.x,
