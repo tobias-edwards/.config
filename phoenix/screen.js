@@ -1,5 +1,10 @@
 class Screens {
   constructor() {
+    this.arrange();
+  }
+
+  arrange() {
+    // NOTE: Only handles horizontal arrangements
     this.all = Screen.all().sort(
       (screen1, screen2) => screen1.frame().x - screen2.frame().x
     );
@@ -28,3 +33,7 @@ Screens.prototype.toString = function () {
 };
 
 const screens = new Screens();
+
+Event.on('screensDidChange', () => {
+  screens.arrange();
+});
