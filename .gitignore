@@ -1,14 +1,11 @@
 # Most of this stuff should NOT live in .config/
-coc/
 configstore/
 gcloud/
 iterm2/
-volta/
 yarn/
 
-# nvim
-nvim/autoload/
-nvim/.netrwhist
+# nvim [lua]
+nvim/plugin/
 
 # zsh
 zsh/plugins/installed/
