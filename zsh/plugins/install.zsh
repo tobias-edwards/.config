@@ -22,8 +22,14 @@ if [ ! -s "$HOME/.deno/bin/deno" ]; then
     curl -fsSL https://deno.land/x/install/install.sh | sh
 fi
 
+# Rust and cargo
+if [[ ! -s "$HOME/.cargo/bin/cargo" || ! -s "$HOME/.cargo/bin/rustc" ]] then
+  curl https://sh.rustup.rs -sSf | sh;
+fi
+
 # Volta
 if [ ! -s "$HOME/.volta/bin/volta" ]; then
     # Run installer but handle Volta setup manually (not currently supported on Windows)
     curl "https://get.volta.sh" | bash -s -- --skip-setup
 fi
+
