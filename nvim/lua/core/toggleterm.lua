@@ -13,7 +13,8 @@ local key_maps = {
 		["<C-h>"] = [[<C-\><C-n><C-W>h]],
 		["<C-j>"] = [[<C-\><C-n><C-W>j]],
 		["<C-k>"] = [[<C-\><C-n><C-W>k]],
-		["<C-l>"] = [[<C-\><C-n><C-W>l]],
+		-- Keep this for 'clear'
+		-- ["<C-l>"] = [[<C-\><C-n><C-W>l]],
 	},
 }
 
