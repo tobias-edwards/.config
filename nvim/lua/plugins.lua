@@ -1,5 +1,23 @@
 -- NOTE: If requiring a plugin, it will use it's default config
 
+-- TODO:
+-- TODO: Handle colours when hex is highlighted
+-- Plug 'ap/vim-css-color'
+-- Plug 'jasonshell/vim-svg-indent'
+-- Plug 'sheerun/vim-polyglot'
+-- Plug 'mattn/emmet-vim'
+--[[ " To use: <leader> ,
+
+" Trigger key
+let g:user_emmet_leader_key='<Leader>'
+
+" Only enable normal mode functions
+let g:user_emmet_mode='n'     ]]
+
+-- Plug 'godlygeek/tabular'
+-- Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+-- Plug 'plasticboy/vim-markdown'
+
 return {
 	{ "wbthomason/packer.nvim" }, -- Packer manage itself
 	{ "nvim-lua/plenary.nvim" }, -- Useful lua functions used by lots of plugins
@@ -63,13 +81,9 @@ return {
 		end,
 	},
 
-	-- Gruvbox material
-	{
-		"sainnhe/gruvbox-material",
-		config = function()
-			require("core.gruvbox-material").setup()
-		end,
-	},
+	-- Helpers
+	-- Interactive coding
+	{ "metakirby5/codi.vim" },
 
 	-- LSP
 	{
@@ -112,6 +126,14 @@ return {
 		end,
 	},
 	{ "tweekmonster/startuptime.vim" },
+
+	-- Themes
+	{
+		"sainnhe/gruvbox-material",
+		config = function()
+			require("core.gruvbox-material").setup()
+		end,
+	},
 
 	-- Treesitter
 	{
