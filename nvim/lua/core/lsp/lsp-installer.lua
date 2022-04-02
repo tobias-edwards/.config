@@ -11,7 +11,8 @@ local capabilities = cmp_nvim_lsp.update_capabilities(
 
 local on_attach = function(client, bufnr)
 	-- :LspInfo to find currently active language servers (clients)
-	local server_on_attach = servers[client.name].on_attach
+	local server_on_attach = servers[client.name]
+		and servers[client.name].on_attach
 	if server_on_attach ~= nil then
 		server_on_attach(client)
 	end
@@ -27,8 +28,10 @@ lsp_installer.on_server_ready(function(server)
 		on_attach = on_attach,
 	}
 
-	local server_opts = servers[server.name].opts
-	opts = vim.tbl_deep_extend("force", server_opts, opts)
+	local server_opts = servers[server.name] and servers[server.name].opts
+	if server_opts ~= nil then
+		opts = vim.tbl_deep_extend("force", server_opts, opts)
+	end
 
 	-- This setup() function is exactly the same as lspconfig's setup function.
 	-- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md

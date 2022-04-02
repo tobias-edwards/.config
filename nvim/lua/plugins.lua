@@ -19,8 +19,15 @@ let g:user_emmet_mode='n'     ]]
 -- Plug 'plasticboy/vim-markdown'
 
 return {
+	-- General
 	{ "wbthomason/packer.nvim" }, -- Packer manage itself
 	{ "nvim-lua/plenary.nvim" }, -- Useful lua functions used by lots of plugins
+	{
+		"rcarriga/nvim-notify",
+		config = function()
+			require("core.notify").setup()
+		end,
+	},
 
 	-- Autopairs
 	{
@@ -57,6 +64,7 @@ return {
 	{ "saadparwaiz1/cmp_luasnip" }, -- snippet completions
 	{ "hrsh7th/cmp-nvim-lsp" }, -- LSP suport
 	{ "hrsh7th/cmp-nvim-lua" }, -- vim.lsp.* completion
+	{ "b0o/schemastore.nvim" }, -- Schemas
 
 	-- Formatting
 	{
@@ -81,7 +89,6 @@ return {
 		end,
 	},
 
-	-- Helpers
 	-- Interactive coding
 	{ "metakirby5/codi.vim" },
 
