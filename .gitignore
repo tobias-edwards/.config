@@ -1,8 +1,5 @@
-# Most of this stuff should NOT live in .config/
-configstore/
-gcloud/
+# TODO: Move this?
 iterm2/
-yarn/
 
 # nvim [lua]
 nvim/plugin/
