@@ -1,4 +1,7 @@
+.DS_Store
+
 # TODO: Move this?
+configstore/
 iterm2/
 
 # nvim [lua]

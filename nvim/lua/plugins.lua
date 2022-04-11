@@ -150,4 +150,13 @@ return {
 		end,
 		run = ":TSUpdate",
 	},
+	-- Syntax highlighting for lit
+	{
+		"jonsmithers/vim-html-template-literals",
+		branch = "dev",
+		requires = {
+			"pangloss/vim-javascript",
+			"leafgarland/typescript-vim",
+		},
+	},
 }
