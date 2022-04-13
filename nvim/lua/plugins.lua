@@ -67,6 +67,7 @@ return {
 	{ "b0o/schemastore.nvim" }, -- Schemas
 
 	-- Formatting
+	{ "editorconfig/editorconfig-vim" }, -- Not technically a formatter, I know ;)
 	{
 		"jose-elias-alvarez/null-ls.nvim",
 		config = function()
