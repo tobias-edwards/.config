@@ -101,6 +101,14 @@ return {
 	},
 	{ "williamboman/nvim-lsp-installer" },
 
+	-- Markdown preview
+	{
+		"ellisonleao/glow.nvim",
+		config = function()
+			require("core.glow").setup()
+		end,
+	},
+
 	-- Nerd Tree
 	{
 		"scrooloose/NERDTree",
