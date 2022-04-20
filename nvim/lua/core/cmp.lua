@@ -34,8 +34,19 @@ local kind_icons = {
 
 local setup = {
 	-- Completion item documentation border
-	documentation = {
-		border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
+	window = {
+		documentation = {
+			border = {
+				"┌",
+				"─",
+				"┐",
+				"│",
+				"┘",
+				"─",
+				"└",
+				"│",
+			},
+		},
 	},
 	experimental = {
 		ghost_text = false,
