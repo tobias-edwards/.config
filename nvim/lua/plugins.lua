@@ -1,8 +1,5 @@
 -- NOTE: If requiring a plugin, it will use it's default config
 
--- TODO:
--- TODO: Handle colours when hex is highlighted
--- Plug 'ap/vim-css-color'
 -- Plug 'jasonshell/vim-svg-indent'
 -- Plug 'sheerun/vim-polyglot'
 -- Plug 'mattn/emmet-vim'
@@ -20,22 +17,8 @@ let g:user_emmet_mode='n'     ]]
 
 return {
 	-- General
-	{ "wbthomason/packer.nvim" }, -- Packer manage itself
+	{ "wbthomason/packer.nvim" }, -- Packer commands
 	{ "nvim-lua/plenary.nvim" }, -- Useful lua functions used by lots of plugins
-	{
-		"rcarriga/nvim-notify",
-		config = function()
-			require("core.notify").setup()
-		end,
-	},
-
-	-- Autopairs
-	{
-		"windwp/nvim-autopairs",
-		config = function()
-			require("core.autopairs").setup()
-		end,
-	},
 
 	-- Commenting
 	{
@@ -48,6 +31,13 @@ return {
 
 	-- Completion
 	{
+		-- Bracket autopairing
+		"windwp/nvim-autopairs",
+		config = function()
+			require("core.autopairs").setup()
+		end,
+	},
+	{
 		"hrsh7th/nvim-cmp",
 		config = function()
 			require("core.cmp").setup()
@@ -58,16 +48,19 @@ return {
 			"rafamadriz/friendly-snippets",
 		},
 	},
-	{ "hrsh7th/cmp-buffer" }, -- buffer completions
-	{ "hrsh7th/cmp-path" }, -- path completions
+	{ "hrsh7th/cmp-buffer" }, -- Buffer completions
+	{ "hrsh7th/cmp-path" }, -- Path completions
 	{ "hrsh7th/cmp-cmdline" }, -- cmdline completions
-	{ "saadparwaiz1/cmp_luasnip" }, -- snippet completions
+	{ "saadparwaiz1/cmp_luasnip" }, -- Snippet completions
 	{ "hrsh7th/cmp-nvim-lsp" }, -- LSP suport
 	{ "hrsh7th/cmp-nvim-lua" }, -- vim.lsp.* completion
 	{ "b0o/schemastore.nvim" }, -- Schemas
 
 	-- Formatting
-	{ "editorconfig/editorconfig-vim" }, -- Not technically a formatter, I know ;)
+	{
+		-- Support .editorconfig
+		"editorconfig/editorconfig-vim",
+	},
 	{
 		"jose-elias-alvarez/null-ls.nvim",
 		config = function()
@@ -76,7 +69,7 @@ return {
 		requires = { "nvim-lua/plenary.nvim" },
 	},
 
-	-- Git support
+	-- Git
 	{
 		"lewis6991/gitsigns.nvim",
 		config = function()
@@ -90,9 +83,6 @@ return {
 		end,
 	},
 
-	-- Interactive coding
-	{ "metakirby5/codi.vim" },
-
 	-- LSP
 	{
 		"neovim/nvim-lspconfig",
@@ -102,15 +92,7 @@ return {
 	},
 	{ "williamboman/nvim-lsp-installer" },
 
-	-- Markdown preview
-	{
-		"ellisonleao/glow.nvim",
-		config = function()
-			require("core.glow").setup()
-		end,
-	},
-
-	-- Nerd Tree
+	-- File tree
 	{
 		"scrooloose/NERDTree",
 		config = function()
@@ -118,7 +100,43 @@ return {
 		end,
 	},
 
-	-- Telescope
+	-- Syntax highlighting
+	{
+		"nvim-treesitter/nvim-treesitter",
+		config = function()
+			require("core.treesitter").setup()
+		end,
+		run = ":TSUpdate",
+	},
+	{
+		-- For lit `html` and `css` template literals
+		"jonsmithers/vim-html-template-literals",
+		branch = "dev",
+		requires = {
+			"pangloss/vim-javascript",
+			"leafgarland/typescript-vim",
+		},
+	},
+	{
+		"norcalli/nvim-colorizer.lua",
+		config = function()
+			-- Colour highlighting for all CSS functions in all filetypes
+			require("colorizer").setup(nil, {
+				css = true,
+				css_fn = true,
+				mode = "background",
+			})
+		end,
+	},
+	{
+		-- Markdown preview
+		"ellisonleao/glow.nvim",
+		config = function()
+			require("core.glow").setup()
+		end,
+	},
+
+	-- Searching for stuff
 	{
 		"nvim-telescope/telescope.nvim",
 		config = function()
@@ -134,15 +152,6 @@ return {
 		run = "make",
 	},
 
-	-- Terminal
-	{
-		"akinsho/toggleterm.nvim",
-		config = function()
-			require("core.toggleterm").setup()
-		end,
-	},
-	{ "tweekmonster/startuptime.vim" },
-
 	-- Themes
 	{
 		"sainnhe/gruvbox-material",
@@ -151,21 +160,16 @@ return {
 		end,
 	},
 
-	-- Treesitter
+	-- Utilities
 	{
-		"nvim-treesitter/nvim-treesitter",
-		config = function()
-			require("core.treesitter").setup()
-		end,
-		run = ":TSUpdate",
+		-- Interactive coding
+		"metakirby5/codi.vim",
 	},
-	-- Syntax highlighting for lit
 	{
-		"jonsmithers/vim-html-template-literals",
-		branch = "dev",
-		requires = {
-			"pangloss/vim-javascript",
-			"leafgarland/typescript-vim",
-		},
+		-- Terminal
+		"akinsho/toggleterm.nvim",
+		config = function()
+			require("core.toggleterm").setup()
+		end,
 	},
 }
