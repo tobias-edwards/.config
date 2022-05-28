@@ -1,20 +1,5 @@
 -- NOTE: If requiring a plugin, it will use it's default config
 
--- Plug 'jasonshell/vim-svg-indent'
--- Plug 'sheerun/vim-polyglot'
--- Plug 'mattn/emmet-vim'
---[[ " To use: <leader> ,
-
-" Trigger key
-let g:user_emmet_leader_key='<Leader>'
-
-" Only enable normal mode functions
-let g:user_emmet_mode='n'     ]]
-
--- Plug 'godlygeek/tabular'
--- Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
--- Plug 'plasticboy/vim-markdown'
-
 return {
 	-- General
 	{ "wbthomason/packer.nvim" }, -- Packer commands
@@ -120,13 +105,17 @@ return {
 	{
 		"norcalli/nvim-colorizer.lua",
 		config = function()
-			-- Colour highlighting for all CSS functions in all filetypes
-			require("colorizer").setup(nil, {
-				css = true,
-				css_fn = true,
-				mode = "background",
-			})
+			require("core.colorizer").setup()
 		end,
+	},
+
+	-- Markdown
+	{
+		"preservim/vim-markdown",
+		config = function()
+			require("core.markdown").setup()
+		end,
+		requires = { { "godlygeek/tabular" } },
 	},
 	{
 		-- Markdown preview
