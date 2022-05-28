@@ -45,6 +45,7 @@ local key_maps = {
 		["¬"] = resize_window("l"),
 
 		-- Unbind join lines command from accidentally triggering
+		-- Only use in visual-select mode
 		["J"] = "",
 
 		-- Disable scroll wheel
@@ -71,9 +72,6 @@ local key_maps = {
 		-- Stay in indent mode
 		["<"] = "<gv",
 		[">"] = ">gv",
-
-		-- Unbind join lines command from accidentally triggering
-		["J"] = "",
 
 		-- Hang on to register content when pasting in VISUAL mode
 		-- keymap('v', 'p', '"_dP')

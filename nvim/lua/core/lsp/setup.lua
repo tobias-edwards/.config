@@ -2,9 +2,9 @@ local M = {}
 
 local signs = {
 	{ name = "DiagnosticSignError", text = "" },
+	{ name = "DiagnosticSignHint", text = "" },
+	{ name = "DiagnosticSignInfo", text = "" },
 	{ name = "DiagnosticSignWarn", text = "" },
-	{ name = "DiagnosticSignHint", text = "" },
-	{ name = "DiagnosticSignInfo", text = "" },
 }
 
 local set_diagnostic_signs = function()

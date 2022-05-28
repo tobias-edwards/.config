@@ -2,8 +2,12 @@
 
 return {
 	-- General
-	{ "wbthomason/packer.nvim" }, -- Packer commands
-	{ "nvim-lua/plenary.nvim" }, -- Useful lua functions used by lots of plugins
+	{
+		"nvim-lualine/lualine.nvim",
+		config = function()
+			require("core.lualine").setup()
+		end,
+	},
 
 	-- Commenting
 	{
@@ -79,10 +83,13 @@ return {
 
 	-- File tree
 	{
-		"scrooloose/NERDTree",
+		"kyazdani42/nvim-tree.lua",
 		config = function()
-			require("core.nerd-tree").setup()
+			require("core.nvim-tree").setup()
 		end,
+		requires = {
+			"kyazdani42/nvim-web-devicons", -- optional, for file icon
+		},
 	},
 
 	-- Syntax highlighting
@@ -96,7 +103,9 @@ return {
 	{
 		-- For lit `html` and `css` template literals
 		"jonsmithers/vim-html-template-literals",
-		branch = "dev",
+		config = function()
+			require("core.html-template-literals").setup()
+		end,
 		requires = {
 			"pangloss/vim-javascript",
 			"leafgarland/typescript-vim",
@@ -141,19 +150,25 @@ return {
 		run = "make",
 	},
 
-	-- Themes
+	-- Themes and appearence
 	{
 		"sainnhe/gruvbox-material",
 		config = function()
 			require("core.gruvbox-material").setup()
 		end,
 	},
+	{
+		-- Shade inactive buffers
+		"sunjon/shade.nvim",
+		config = function()
+			require("core.shade").setup()
+		end,
+	},
 
 	-- Utilities
-	{
-		-- Interactive coding
-		"metakirby5/codi.vim",
-	},
+	{ "wbthomason/packer.nvim" }, -- Packer commands
+	{ "nvim-lua/plenary.nvim" }, -- Useful lua functions used by lots of plugins
+	{ "metakirby5/codi.vim" }, -- Interactive coding
 	{
 		-- Terminal
 		"akinsho/toggleterm.nvim",
