@@ -3,11 +3,14 @@
 # TODO: Move this?
 configstore/
 iterm2/
+yarn/
+
 
 # nvim [lua]
 nvim/plugin/
 
 # zsh
 zsh/plugins/installed/
+zsh/.zcompcache
 zsh/.zcompdump
 zsh/.zsh_history
