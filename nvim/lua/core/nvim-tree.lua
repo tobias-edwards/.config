@@ -17,7 +17,7 @@ M.setup = function()
 			ignore = true,
 			timeout = 200, -- May not be enough for large monorepos
 		},
-		open_on_setup = true, -- Open tree on start when no file
+		open_on_setup = false, -- Open tree on start when no file
 		diagnostics = {
 			enable = true,
 			show_on_dirs = false,
