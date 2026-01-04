@@ -1,0 +1,68 @@
+# To whitelist a subfolder `parent/child1/gradnchild1` only, all parent folders must be first whitelisted
+# And then all other subfolders can be recursively blacklisted up to the root `/*`
+#
+# |-parent
+# |  |-child1
+# |  |  |-grandchild1
+# |  |  |-grandchild2
+# |  |-child2
+#
+# /*                          # Ignore all files/folders in the same directory as `.gitignore`
+# !parent                     # Whitelist the parent
+# parent/*                    # Blacklist everything else i.e. `parent/child2`
+# !parent/child1              # Whitelist the parent, again
+# parent/child1/*             # Blacklist everything else i.e. `parent/child1/grandchild2`
+# !parent/child1/grandchild   # Whitelist the deeply nested thing we want!
+
+/*
+
+!.gitignore
+!README.md
+!install.sh
+
+!alacritty
+!analysers
+!fontconfig
+
+!mise.toml
+
+!docs
+
+!git
+git/*
+!git/config
+!git/sky
+!git/sky/config
+
+!kitty
+kitty/kitty.conf.bak
+!macos
+!mise/
+mise/*
+!mise/config.toml
+!neofetch/config.conf
+!nvim
+!phoenix
+!root
+!tmux/
+tmux/*
+!tmux/tmux.conf
+!tridactyl
+!zellij/
+zellij/*
+!zellij/config.kdl
+!zellij/layouts
+!zellij/README.md
+!zsh/
+zsh/*
+!zsh/aliases.zsh
+!zsh/exports.zsh
+!zsh/general.zsh
+!zsh/utils.zsh
+!zsh/.zshenv
+!zsh/.zshrc
+!zsh/plugins
+zsh/plugins/*
+!zsh/plugins/config
+!zsh/plugins/install.zsh
+!zsh/themes

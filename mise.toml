@@ -1,0 +1,5 @@
+[tools]
+bun = "latest"
+gitleaks = "latest"
+go = "latest"
+node = "latest"

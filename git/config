@@ -1,0 +1,44 @@
+[user]
+	name = tobias-edwards
+
+[include]
+  path = ./config.local
+
+[includeIf "gitdir:~/Repos/sky-uk/"]
+  path = ./sky/config
+
+[core]
+  fsmonitor = true
+  pager = delta
+  untrackedCache = true
+
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  diff-so-fancy = true
+  file-decoration-style = ol
+  hunk-header-decoration-style = ""
+  hunk-header-style = omit
+  hunk-label = ""
+  light = false # dark mode
+  line-numbers = true
+  navigate = true # use n and N to move between diff sections
+  side-by-side = false
+  syntax-theme = "gruvbox-dark"
+
+[merge]
+  conflictstyle = merge
+
+[diff]
+  colorMoved = default
+
+[push]
+	autoSetupRemote = true
+
+[init]
+	defaultBranch = main
+[gpg]
+	format = ssh
+; [commit]
+; 	gpgsign = true
