@@ -4,7 +4,7 @@ A minimalist, Vim-centric environment powered by Neovim, Alacritty, tmux, Phoeni
 
 ![.config usage demo](./docs/demo.png)
 
-## Install
+## Installation
 
 Compatible with macOS, can be installed by:
 
@@ -12,7 +12,9 @@ Compatible with macOS, can be installed by:
 cd ~
 git clone git@github.com:tobias-edwards/.config.git
 cd .config
-zsh install.sh # May need to rerun this a few times, and then open neovim a few times
+
+# May need to rerun this a few times, and then open neovim a few times for installation to complete
+zsh install.sh
 ```
 
 ## Development
