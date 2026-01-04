@@ -2,6 +2,10 @@
 
 ## Scan for Git leaks
 
+```
+gitleaks git . --report-path "report.json" -v
+```
+
 ## To clean up on the next installation
 
 Slack appearence:
@@ -43,4 +47,4 @@ Setup at git email at company:
 
 2. Copy SSH key from and paste to GitHub: `cat id_ed25519.pub`
 
-3. Use company and personal email in `.config/git`
+3. Use company and personal email in `.config/git` (create `.config/git/config.local`)

@@ -10,8 +10,14 @@ Compatible with macOS, can be installed by:
 
 ```zsh
 cd ~
-mkdir .config
+git clone git@github.com:tobias-edwards/.config.git
 cd .config
-git clone ...
 zsh install.sh # May need to rerun this a few times, and then open neovim a few times
+```
+
+## Development
+
+```zsh
+mise install        # Install gitleaks, pre-commit
+pre-commit install  # Set up pre-commit hook
 ```

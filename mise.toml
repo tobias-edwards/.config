@@ -1,5 +1,7 @@
 [tools]
-bun = "latest"
 gitleaks = "latest"
-go = "latest"
-node = "latest"
+pre-commit = "latest"
+
+[tasks.scan]
+description = "Runs Gitleaks on repo"
+run = "gitleaks git ~/.config --report-path 'report.json' -v"

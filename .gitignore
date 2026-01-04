@@ -23,6 +23,7 @@
 !alacritty
 !analysers
 !fontconfig
+!.pre-commit-config.yaml
 
 !mise.toml
 
