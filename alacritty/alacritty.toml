@@ -63,6 +63,12 @@ mode = "~Search"
 mods = "Control"
 
 [[keyboard.bindings]]
+# "Send shift+enter as opt+enter for newline in Claude in tmux"
+key = "Return"
+mods = "Shift"
+chars = "\u001b\r"
+
+[[keyboard.bindings]]
 action = "ScrollToBottom"
 key = "A"
 mode = "Vi|~Search"
