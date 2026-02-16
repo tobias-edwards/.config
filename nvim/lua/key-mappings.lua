@@ -31,8 +31,8 @@ local key_maps = {
 		["<leader><leader>r"] = ":Lazy reload plantuml-preview<CR>:PlantumlPreviewOpen<CR>",
 		["<leader>m"] = ":messages<CR>",
 
-		-- Escape with Ctrl + C
-		["<C-c>"] = "<ESC>",
+		-- Escape with Ctrl + C, and remove highlights
+		["<C-c>"] = "<ESC>:noh<CR>",
 
 		-- Navigate windows
 		["<C-h>"] = "<C-w>h",
@@ -71,7 +71,7 @@ local key_maps = {
 		["<leader>r"] = ":%s/",
 
 		-- Remove highlights
-		["<leader>h"] = ":noh<CR>",
+		-- ["<leader>h"] = ":noh<CR>",
 	},
 	[MODES.visual_select] = {
 		-- Stay in indent mode
