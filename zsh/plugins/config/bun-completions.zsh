@@ -36,6 +36,7 @@ _bun_add_completion() {
         '-D[]' \
         '--development[]' \
         '--optional[Add dependency to "optionalDependencies]' \
+        '--peer[Add dependency to "peerDependencies]' \
         '--exact[Add the exact version instead of the ^range]' &&
         ret=0
 
@@ -261,6 +262,7 @@ _bun_pm_completion() {
             'hash-string\:"print the string used to hash the lockfile" '
             'hash-print\:"print the hash stored in the current lockfile" '
             'cache\:"print the path to the cache folder" '
+            'version\:"bump the version in package.json and create a git tag" '
         )
 
         _alternative "args:cmd3:(($sub_commands))"
@@ -298,6 +300,40 @@ _bun_pm_completion() {
                 '2: :->cmd2' \
                 $pmargs &&
                 ret=0
+
+            ;;
+        version)
+            version_args=(
+                "patch[increment patch version]"
+                "minor[increment minor version]"
+                "major[increment major version]"
+                "prepatch[increment patch version and add pre-release]"
+                "preminor[increment minor version and add pre-release]"
+                "premajor[increment major version and add pre-release]"
+                "prerelease[increment pre-release version]"
+                "from-git[use version from latest git tag]"
+            )
+
+            pmargs=(
+                "--no-git-tag-version[don't create a git commit and tag]"
+                "--allow-same-version[allow bumping to the same version]"
+                "-m[use the given message for the commit]:message"
+                "--message[use the given message for the commit]:message"
+                "--preid[identifier to prefix pre-release versions]:preid"
+            )
+
+            _arguments -s -C \
+                '1: :->cmd' \
+                '2: :->cmd2' \
+                '3: :->increment' \
+                $pmargs &&
+                ret=0
+
+            case $state in
+            increment)
+                _alternative "args:increment:(($version_args))"
+                ;;
+            esac
 
             ;;
         esac
@@ -340,6 +376,7 @@ _bun_install_completion() {
         '--development[]' \
         '-D[]' \
         '--optional[Add dependency to "optionalDependencies]' \
+        '--peer[Add dependency to "peerDependencies]' \
         '--exact[Add the exact version instead of the ^range]' &&
         ret=0
 
@@ -426,6 +463,7 @@ _bun_run_completion() {
         '--external[Exclude module from transpilation (can use * wildcards). ex: -e react]:external' \
         '-e[Exclude module from transpilation (can use * wildcards). ex: -e react]:external' \
         '--loader[Parse files with .ext:loader, e.g. --loader .js:jsx. Valid loaders: js, jsx, ts, tsx, json, toml, text, file, wasm, napi]:loader' \
+        '--packages[Exclude dependencies from bundle, e.g. --packages external. Valid options: bundle, external]:packages' \
         '-l[Parse files with .ext:loader, e.g. --loader .js:jsx. Valid loaders: js, jsx, ts, tsx, json, toml, text, file, wasm, napi]:loader' \
         '--origin[Rewrite import URLs to start with --origin. Default: ""]:origin' \
         '-u[Rewrite import URLs to start with --origin. Default: ""]:origin' \
@@ -487,6 +525,33 @@ _bun_upgrade_completion() {
 
 }
 
+_bun_repl_completion() {
+    _arguments -s -C \
+        '1: :->cmd' \
+        '--help[Print this help menu]' \
+        '-h[Print this help menu]' \
+        '(-p --print)--eval[Evaluate argument as a script, then exit]:script' \
+        '(-p --print)-e[Evaluate argument as a script, then exit]:script' \
+        '(-e --eval)--print[Evaluate argument as a script, print the result, then exit]:script' \
+        '(-e --eval)-p[Evaluate argument as a script, print the result, then exit]:script' \
+        '--preload[Import a module before other modules are loaded]:preload' \
+        '-r[Import a module before other modules are loaded]:preload' \
+        '--smol[Use less memory, but run garbage collection more often]' \
+        '--config[Specify path to Bun config file]: :->config' \
+        '-c[Specify path to Bun config file]: :->config' \
+        '--cwd[Absolute path to resolve files & entry points from]:cwd' \
+        '--env-file[Load environment variables from the specified file(s)]:env-file' \
+        '--no-env-file[Disable automatic loading of .env files]' &&
+        ret=0
+
+    case $state in
+    config)
+        _bun_list_bunfig_toml
+
+        ;;
+    esac
+}
+
 _bun_build_completion() {
     _arguments -s -C \
         '1: :->cmd' \
@@ -537,6 +602,7 @@ _bun_update_completion() {
         '--save[Save to package.json]' \
         '--dry-run[Don'"'"'t install anything]' \
         '--frozen-lockfile[Disallow changes to lockfile]' \
+        '--latest[Updates dependencies to latest version, regardless of compatibility]' \
         '-f[Always request the latest versions from the registry & reinstall all dependencies]' \
         '--force[Always request the latest versions from the registry & reinstall all dependencies]' \
         '--cache-dir[Store & load cached data from a specific directory path]:cache-dir' \
@@ -552,6 +618,22 @@ _bun_update_completion() {
         '--cwd[Set a specific cwd]:cwd' \
         '--backend[Platform-specific optimizations for installing dependencies]:backend:("copyfile" "hardlink" "symlink")' \
         '--link-native-bins[Link "bin" from a matching platform-specific dependency instead. Default: esbuild, turbo]:link-native-bins' \
+        '--help[Print this help menu]' &&
+        ret=0
+
+    case $state in
+    config)
+        _bun_list_bunfig_toml
+
+        ;;
+    esac
+}
+
+_bun_outdated_completion() {
+    _arguments -s -C \
+        '--cwd[Set a specific cwd]:cwd' \
+        '--verbose[Excessively verbose logging]' \
+        '--no-progress[Disable the progress bar]' \
         '--help[Print this help menu]' &&
         ret=0
 
@@ -611,7 +693,7 @@ _bun_test_completion() {
         '--timeout[Set the per-test timeout in milliseconds, default is 5000.]:timeout' \
         '--update-snapshots[Update snapshot files]' \
         '--rerun-each[Re-run each test file <NUMBER> times, helps catch certain bugs]:rerun' \
-        '--only[Only run tests that are marked with "test.only()"]' \
+        '--retry[Default retry count for all tests]:retry' \
         '--todo[Include tests that are marked with "test.todo()"]' \
         '--coverage[Generate a coverage profile]' \
         '--bail[Exit the test suite after <NUMBER> failures. If you do not specify a number, it defaults to 1.]:bail' \
@@ -655,7 +737,7 @@ _bun() {
     cmd)
         local -a scripts_list
         IFS=$'\n' scripts_list=($(SHELL=zsh bun getcompletes i))
-        scripts="scripts:scripts:(($scripts_list))"
+        scripts="scripts:scripts:((${scripts_list//:/\\\\:}))"
         IFS=$'\n' files_list=($(SHELL=zsh bun getcompletes j))
 
         main_commands=(
@@ -669,6 +751,7 @@ _bun() {
             'add\:"Add a dependency to package.json (bun a)" '
             'remove\:"Remove a dependency from package.json (bun rm)" '
             'update\:"Update outdated dependencies & save to package.json" '
+            'outdated\:"Display the latest versions of outdated dependencies" '
             'link\:"Link an npm package globally" '
             'unlink\:"Globally unlink an npm package" '
             'pm\:"More commands for managing packages" '
@@ -733,12 +816,20 @@ _bun() {
             _bun_upgrade_completion
 
             ;;
+        repl)
+            _bun_repl_completion
+
+            ;;
         build)
             _bun_build_completion
 
             ;;
         update)
             _bun_update_completion
+
+            ;;
+        outdated)
+            _bun_outdated_completion
 
             ;;
         'test')
@@ -812,12 +903,20 @@ _bun() {
                     _bun_upgrade_completion
 
                     ;;
+                repl)
+                    _bun_repl_completion
+
+                    ;;
                 build)
                     _bun_build_completion
 
                     ;;
                 update)
                     _bun_update_completion
+
+                    ;;
+                outdated)
+                    _bun_outdated_completion
 
                     ;;
                 'test')
@@ -846,8 +945,8 @@ _bun_run_param_script_completion() {
     IFS=$'\n' scripts_list=($(SHELL=zsh bun getcompletes s))
     IFS=$'\n' bins=($(SHELL=zsh bun getcompletes b))
 
-    _alternative "scripts:scripts:(($scripts_list))"
-    _alternative "bin:bin:(($bins))"
+    _alternative "scripts:scripts:((${scripts_list//:/\\\\:}))"
+    _alternative "bin:bin:((${bins//:/\\\\:}))"
     _alternative "files:file:_files -g '*.(js|ts|jsx|tsx|wasm)'"
 }
 
