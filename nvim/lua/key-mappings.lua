@@ -87,7 +87,9 @@ local key_maps = {
 		-- keymap('v', 'P', '"_dP')
 	},
 	[MODES.visual] = {
-		["<M-c>"] = '"+y',
+		-- ["<M-c>"] = '"+y',
+		-- Preserve yanked text while pasting in visual mode
+		["p"] = "P",
 
 		-- Move text up and down in VISUAL-BLOCK mode
 		["<C-j>"] = ":move '>+1<CR>gv-gv",
