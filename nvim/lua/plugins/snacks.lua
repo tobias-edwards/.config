@@ -11,12 +11,6 @@ return {
 		-- Prevents LSP/Treesitter from automatically attaching to large buffers
 		bigfile = { enabled = true },
 
-		dashboard = {
-			preset = {
-				-- header = "Hello",
-			},
-		},
-
 		git = { enabled = true },
 
 		-- explorer = { enabled = true },
