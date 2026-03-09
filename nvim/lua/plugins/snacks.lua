@@ -14,7 +14,7 @@ return {
 		git = { enabled = true },
 
 		-- explorer = { enabled = true },
-		input = { enabled = true },
+		-- input = { enabled = true },
 
 		picker = {
 			enabled = true,
@@ -31,7 +31,9 @@ return {
 		{
 			"<C-p>",
 			function()
-				Snacks.picker.smart()
+				Snacks.picker.files({
+					cwd = true,
+				})
 			end,
 			desc = "Smart Find Files",
 		},
