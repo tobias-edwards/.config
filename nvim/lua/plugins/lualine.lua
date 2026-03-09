@@ -16,7 +16,12 @@ local default_config = {
 				timeout = 500,
 			},
 		},
-		lualine_y = {},
+		lualine_y = {
+			function()
+				local progress = require("lsp-progress").progress()
+				return progress
+			end,
+		},
 		lualine_z = {},
 	},
 	tabline = {},
@@ -62,6 +67,15 @@ return {
 	"nvim-lualine/lualine.nvim",
 	config = function()
 		require("lualine").setup(default_config)
+
 		toggle_detailed_config()
+
+		-- listen lsp-progress event and refresh lualine
+		vim.api.nvim_create_augroup("lualine_augroup", { clear = true })
+		vim.api.nvim_create_autocmd("User", {
+			group = "lualine_augroup",
+			pattern = "LspProgressStatusUpdated",
+			callback = require("lualine").refresh,
+		})
 	end,
 }

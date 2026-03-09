@@ -29,6 +29,13 @@ return {
 		-- { "<leader>fp", function() Snacks.picker.projects() end, desc = "Projects" },
 
 		{
+			"<leader>fh",
+			function()
+				Snacks.picker.help()
+			end,
+			desc = "Help Pages",
+		},
+		{
 			"<C-p>",
 			function()
 				Snacks.picker.files({
@@ -37,16 +44,6 @@ return {
 			end,
 			desc = "Smart Find Files",
 		},
-		-- {
-		-- 	"<C-P>",
-		-- 	function()
-		-- 		Snacks.picker.files({
-		-- 			ignored = true, -- Include non-Git
-		-- 			hidden = true,
-		-- 		})
-		-- 	end,
-		-- 	desc = "Find Files",
-		-- },
 		{
 			"<C-g>",
 			function()
