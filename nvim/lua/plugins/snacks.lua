@@ -9,7 +9,11 @@ return {
 	---@type snacks.Config
 	opts = {
 		-- Prevents LSP/Treesitter from automatically attaching to large buffers
-		bigfile = { enabled = true },
+		bigfile = {
+			enabled = true,
+			size = 1.5 * 1024 * 104, -- 1.5MB
+			line_length = 1000, -- average line length, useful for minified files
+		},
 
 		git = { enabled = true },
 
