@@ -2,9 +2,9 @@
 bun = "latest"
 node = "latest"
 usage = "latest"
-neovim = "0.11.6"
+neovim = "stable"
 deno = "latest"
-java = "24"
+java = "latest"
 redis = "latest"
 python = "3.13"
 

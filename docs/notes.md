@@ -1,50 +1,83 @@
-# Notes dump
+# Installation notes
 
-## Scan for Git leaks
+## SSH key
 
+1. Generate SSH key on new device. Before cloning, add `github.com` as a known host:
+
+```zsh
+ssh-keyscan github.com >> ~/.ssh/known_hosts
 ```
-gitleaks git . --report-path "report.json" -v
+
+2. Generate SSH key using email:
+
+```zsh
+ssh-keygen -t ed25519 -C "your_email@example.com"
 ```
 
-## To clean up on the next installation
+3. Copy SSH key from and paste to GitHub: `cat id_ed25519.pub`
 
-Slack appearence:
+## Git
+
+1. Use company and personal email in `.config/git` (create `.config/git/config.local`).
+
+2. Configure Git:
+
+```zsh
+git config --global user.email "email@goes.here"
+git config --global user.name "Homer Simpson"
+```
+
+## Installation
+
+```zsh
+cd ~/.config
+zsh ./install.sh
+```
+
+Install binaries, and then launch Neovim:
+
+```zsh
+mise install
+vim
+```
+
+## Keyboard
+
+Remove all keyboard shortcuts except:
+
+- Move focus to next window: `Alt + Tab`
+- Accessibilty: `Cmd + F5`
+- Map Caps key -> Ctrl
+- Input source: `Australian`
+
+## Applications
+
+### Slack
+
+Appearence:
 
 ```
 #d4be98, #7c6f64, #7c6f64, #a9b665
 ```
 
-Use company email on ssh generation
-Run install script, rerun it a couple of times, source .zshrc, rerunn install script, open vi a couple of times.
+### Phoenix
 
-Remove all keyboard shortcuts (which may interfere with tmux, etc.) except:
+Give permissions and set as login item.
 
-- Move focus to next window - alt + tab
-- Spotlight search - cmd + space
-- Accessibilty - CMD + F5
-- Map caps -> Ctrl
-- Input source -> Australian
+### Bartender
+
+Give permissions and set as login item.
+
+### Raycast
+
+Give permissions and set as login item.
+
+Configure `CMD+Space` to launch.
 
 ```
-mise use -g node
 npm i -g vscode-langservers-extracted graphql-language-service-cli
 ```
 
-Existing .config?
+## Existing `.config`?
 
-1. Clone into `temp/`, move all files from `temp/` into `.config/`, and then move hidden files. After, remove empty `temp/`
-
-Currently:
-
-1. Generate SSH key on new device. Before cloning, add github.com as a known host:
-
-`ssh-keyscan github.com >> ~/.ssh/known_hosts`
-https://github.com/ome/devspace/issues/38#issuecomment-211515244
-
-Setup at git email at company:
-
-1. ssh-keygen -t ed25519 -C "your_email@example.com"
-
-2. Copy SSH key from and paste to GitHub: `cat id_ed25519.pub`
-
-3. Use company and personal email in `.config/git` (create `.config/git/config.local`)
+Clone into `temp/`, move all files from `temp/` into `.config/`, and then move hidden files. After, remove empty `temp/`.

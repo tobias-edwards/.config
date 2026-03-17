@@ -43,17 +43,13 @@ brew install luarocks
 
 brew install --cask nikitabobko/tap/aerospace
 # NOTE: Post Phoenix install, manually open it and enable `Accessibility` access
-brew install --cask \
-    bartender \
-    raycast \
-    buttercup \
-    phoenix \
-    firefox \
-    google-chrome
-    # keepingyouawake \
-
-# NOTE: Support Alacritty on macOS, see https://github.com/alacritty/alacritty/issues/4673#issuecomment-771291615
-brew install --cask alacritty --no-quarantine
+brew install --cask bartender
+brew install --cask raycast
+brew install --cask buttercup
+brew install --cask phoenix
+brew install --cask firefox
+brew install --cask google-chrome
+brew install --cask alacritty
 # curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 
 brew tap homebrew/cask-fonts

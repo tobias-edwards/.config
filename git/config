@@ -1,5 +1,6 @@
 [user]
-	name = tobias-edwards
+	name = Tobias Edwards
+	email = tobias_r_edwards@hotmail.co.uk
 
 [include]
   path = ./config.local
