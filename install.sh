@@ -26,7 +26,6 @@ brew install \
     mysql \
     tmux \
     lua-language-server \
-    scroll-reverser \
     kubectl \
     kustomize \
     colima \

@@ -10,3 +10,6 @@ python = "3.13"
 
 [settings]
 idiomatic_version_file_enable_tools = ["bun"]
+
+[settings.ruby]
+compile = false
