@@ -13,3 +13,6 @@ eval "$(~/.local/bin/mise completion zsh)"
 
 # bun completions
 [ -s "/Users/tobias/.bun/_bun" ] && source "/Users/tobias/.bun/_bun"
+
+# fzf completions
+source <(fzf --zsh)

@@ -36,6 +36,8 @@ mise use -g java
 brew install graphviz
 brew install plantuml
 
+brew install bat # `cat` with syntax highlighting
+
 brew tap hashicorp/tap
 brew install hashicorp/tap/terraform
 brew install luarocks

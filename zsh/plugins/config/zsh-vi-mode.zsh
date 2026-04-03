@@ -1,3 +1,4 @@
+ZVM_INIT_MODE=sourcing # Initialise when sourced to avoid conflict with fzf initialisation
 ZVM_VI_INSERT_ESCAPE_BINDKEY='jk'
 
 function zvm_after_init() {

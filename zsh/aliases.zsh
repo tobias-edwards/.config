@@ -46,5 +46,4 @@ function killp() {
     kill -9 $(lsof -t -i:"$1" -sTCP:LISTEN)
 }
 
-# main-etl
-alias uvsh='source .venv/bin/activate'
+alias cat="bat --style='plain' --theme='gruvbox-dark'"
