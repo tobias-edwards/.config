@@ -8,8 +8,6 @@ return {
 				javascript = { "string", "template_string" },
 				lua = { "string", "source" },
 			},
-			-- Disable pairing for these filetypes. `:echo &ft` to reveal filetype
-			disable_filetype = { "TelescopePrompt" },
 		})
 	end,
 

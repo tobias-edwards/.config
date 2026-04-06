@@ -20,17 +20,18 @@ return {
 			vim.keymap.set("n", "K", function()
 				vim.lsp.buf.hover({ border = "single" })
 			end)
-			-- vim.keymap.set("n", "gd", vim.lsp.buf.definition)
 			vim.keymap.set("n", "gl", function()
 				vim.diagnostic.open_float({ border = "single", scope = "line" })
 			end)
 			vim.keymap.set("n", "ga", vim.lsp.buf.code_action)
 
+			-- vim.lsp.set_log_level("debug") -- debug mode via :LspLog
+
+			-- NOTE: Use snacks picker instead for below
+			-- vim.keymap.set("n", "gd", vim.lsp.buf.definition)
 			-- vim.keymap.set("n", "gr", function()
 			-- 	vim.lsp.buf.references()
 			-- end)
-
-			-- vim.lsp.set_log_level("debug") -- debug mode via :LspLog
 		end,
 	},
 	{
