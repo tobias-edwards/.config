@@ -1,5 +1,6 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
+	branch = "master",
 	config = function()
 		require("nvim-treesitter.configs").setup({
 			autopairs = { enable = true },
