@@ -4,8 +4,8 @@ local PLUGIN_CONFIG="${ZDOTDIR}/plugins/config"
 
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 
-zsh_add_file "${PLUGIN_CONFIG}/zsh-async.zsh"
-zsh_add_plugin "mafredri/zsh-async"
+# zsh_add_file "${PLUGIN_CONFIG}/zsh-async.zsh"
+# zsh_add_plugin "mafredri/zsh-async"
 
 zsh_add_file "${PLUGIN_CONFIG}/pure.zsh"
 zsh_add_plugin "sindresorhus/pure"
