@@ -52,14 +52,18 @@ return {
 			function()
 				Snacks.picker.files({
 					cwd = true,
+					hidden = true,
 				})
 			end,
-			desc = "Smart Find Files",
+			desc = "Find Files",
 		},
 		{
 			"<C-g>",
 			function()
-				Snacks.picker.grep()
+				Snacks.picker.grep({
+					cwd = true,
+					hidden = true,
+				})
 			end,
 			desc = "Grep",
 		},
